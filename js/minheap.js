@@ -130,7 +130,12 @@ class MinHeap {
 	}
 
 	delete(metric = identity) {
-		// TODO: stub
+		const element = this.search(metric);
+		const tail = this._getTail(false);
+		element.swapWith(tail);
+		this._destroy(tail);
+		this._heapify(element, false);
+		return element;
 	}
 
 	search(metric) {
